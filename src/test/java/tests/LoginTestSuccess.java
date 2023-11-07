@@ -7,10 +7,10 @@ import pages.LoginPage;
 import pages.ProductPage;
 
 public class LoginTestSuccess extends TestUtil {
-    @Test
-    public void SuccessfulLogin(){
+    @Test(dataProvider = "correctUsers")
+    public void SuccessfulLogin(String username,String password){
         LoginPage loginPage = new LoginPage(driver);
-        ProductPage productPage = loginPage.login("standard_user","secret_sauce");
+        ProductPage productPage = loginPage.login(username,password);
 
         Assert.assertTrue(productPage.isAt());
     }

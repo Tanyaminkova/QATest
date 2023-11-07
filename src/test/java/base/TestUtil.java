@@ -10,9 +10,10 @@ import org.testng.annotations.BeforeMethod;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 
-public class TestUtil {
+public class TestUtil extends DataProviders {
     public WebDriver driver;
     private String testURL, browser;
     private int implicitWait;
@@ -23,6 +24,8 @@ public class TestUtil {
         readConfig("src/test/resources/config.properties");
         setupDriver();
         driver.get(testURL);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWait));
+
 
     }
 
